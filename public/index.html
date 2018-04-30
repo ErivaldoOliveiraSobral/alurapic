@@ -3,12 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
-        <title>Alurapic</title>
+        <title>Alura Aungular</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/efeitos.css">
         <script type="text/javascript" src="js/lib/angular.min.js"></script>
+        <script type="text/javascript" src="js/lib/angular-animate.min.js"></script>
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/controllers/fotos-controller.js"></script>
+        <script type="text/javascript" src="js/controllers/footer-controller.js"></script>
         <script type="text/javascript" src="js/directives/minhas-diretivas.js"></script>
 
     </head>
@@ -17,15 +20,34 @@
             <div class="jumbotron">
                 <h1 class="text-center">Alurapic</h1>
             </div>
-            
+
             <div class="row">
-                <meu-painel ng-repeat="foto in fotos" titulo="{{foto.titulo}}">
+                <div class="col-md-12">
+                    <form>
+                        <input ng-model="filtro" ng-model-options="{ debounce: 50 }" class="form-control" type="text" name="filtro" placeholder="Filtrar">
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <meu-painel class="col-md-2 fade-out" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
                     <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
                 </meu-painel>
             </div> <!-- fim do row -->
        
         </div> <!-- fim container -->        
     </body>
+<!--
+    <footer ng-controller="footerController">
+        <input ng-model="filtro" type="text" name="">
+        <div ng-repeat="pedido in pedidos | filter: { id: filtro }">
+            <table class="row color">
+                <tr>ID: {{pedido.id}}</tr>
+                <tr>, Produto: {{pedido.produto}}</tr>
+            </table>
+        </div>
+    </footer>
+-->
 </html>
 
 <!-- 

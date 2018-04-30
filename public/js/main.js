@@ -1,1 +1,1 @@
-angular.module('alurapic', ['minhasDiretivas']); //modulo global
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate']); //modulo global 
