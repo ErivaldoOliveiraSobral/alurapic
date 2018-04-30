@@ -1,9 +1,14 @@
-// Usando o modulo criado em main.js
-angular.module('alurapic').controller('FotosController', function($scope) {
+// Usando o modulo (alurapic) criado em main.js
+angular.module('alurapic').controller('FotosController', function($scope, $http) {
 	
-	$scope.foto = {
-		titulo:"Leão",
-		url:"https://i0.wp.com/www.respingosdagraca.com.br/wp-content/uploads/2017/08/leao-660.jpg?fit=660%2C413&ssl=1"
-	};
+	$scope.fotos = [];
+
+	$http.get('http://localhost:3000/v1/fotos')
+	.success(function(fotos) {
+		$scope.fotos = fotos;
+	})
+	.error(function(erro) {
+		console.log(erro);
+	});
 
 });
