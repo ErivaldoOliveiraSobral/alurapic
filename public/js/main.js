@@ -1,1 +1,17 @@
-angular.module('alurapic', ['minhasDiretivas', 'ngAnimate']); //modulo global 
+angular.module('alurapic', ['minhasDiretivas', 'ngAnimate', 'ngRoute']) //modulo global
+.config(function($routeProvider, $locationProvider) {
+
+	$locationProvider.html5Mode(true);
+
+	$routeProvider.when('/fotos', {
+		templateUrl: 'partials/principal.html',
+		controller: 'FotosController'
+	});
+
+	$routeProvider.when('/fotos/new', {
+		templateUrl: 'partials/fotos.html',
+		controller: ''
+	});
+
+	$routeProvider.otherwise({ redirectTo:'/fotos' });
+}); 

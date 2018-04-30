@@ -2,6 +2,7 @@
 <html lang="pt-br" ng-app="alurapic">
     <head>
         <meta charset="UTF-8">
+        <base href="/">
         <meta name="viewport" content="width=device-width">
         <title>Alura Aungular</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -12,33 +13,26 @@
         <script type="text/javascript" src="js/main.js"></script>
         <script type="text/javascript" src="js/controllers/fotos-controller.js"></script>
         <script type="text/javascript" src="js/controllers/footer-controller.js"></script>
+        <script type="text/javascript" src="js/controllers/title-controller.js"></script>
         <script type="text/javascript" src="js/directives/minhas-diretivas.js"></script>
+        <script type="text/javascript" src="js/lib/angular-route.min.js"></script>
 
     </head>
-    <body ng-controller="FotosController" >
+    <body>
         <div class="container">
-            <div class="jumbotron">
-                <h1 class="text-center">Alurapic</h1>
+            <div ng-controller="TitleController" class="jumbotron">
+                <h1 class="text-center">{{titulo}}</h1>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <form>
-                        <input ng-model="filtro" ng-model-options="{ debounce: 50 }" class="form-control" type="text" name="filtro" placeholder="Filtrar">
-                    </form>
-                </div>
-            </div>
+            <ng-view></ng-view>
 
-            <div class="row">
-                <meu-painel class="col-md-2 fade-out" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
-                    <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
-                </meu-painel>
-            </div> <!-- fim do row -->
-       
-        </div> <!-- fim container -->        
+            <div ng-controller="FotoAngularController">
+                <div minha-foto titulo="{{minhaFoto.titulo}}" url="{{minhaFoto.url}}"></div>
+            </div> 
+      
     </body>
 <!--
-    <footer ng-controller="footerController">
+    <footer ng-controller="FooterController">
         <input ng-model="filtro" type="text" name="">
         <div ng-repeat="pedido in pedidos | filter: { id: filtro }">
             <table class="row color">

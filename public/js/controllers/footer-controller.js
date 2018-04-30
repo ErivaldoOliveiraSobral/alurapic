@@ -1,4 +1,4 @@
-angular.module('alurapic').controller('footerController', function($scope, $http) {
+angular.module('alurapic').controller('FooterController', function($scope, $http) {
 	$scope.nome = "Alura AngularJs";
 	$scope.filtro = '';
 
