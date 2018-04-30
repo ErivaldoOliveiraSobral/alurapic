@@ -1,1 +1,1 @@
-angular.module('alurapic', []); //modulo global
+angular.module('alurapic', ['minhasDiretivas']); //modulo global
