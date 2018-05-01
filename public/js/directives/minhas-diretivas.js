@@ -57,5 +57,45 @@ angular.module('minhasDiretivas', [])
 	ddo.template = '<a href={{url}} class="btn btn-primary btn-block">{{nome}}</a>';
 
 	return ddo;
+})		
+.directive('meuFocus', function() {
+    var ddo = {};
+    ddo.restrict = "A";
+   // não tem mais scope
+    ddo.link = function(scope, element) {
+         scope.$on('fotoCadastrada', function() {
+             element[0].focus();
+         });
+    };
+
+    return ddo;
+})
+.directive('meusTitulos', function() {
+    var ddo = {};
+    ddo.restrict = 'E';
+    ddo.template = '<ul><li ng-repeat="foto in fotos">{{foto.titulo}}</li></ul>';
+    ddo.controller = function($scope, recursoFoto) {
+        recursoFoto.query(function(fotos) {
+            $scope.fotos = fotos;
+        });
+    };
+    return ddo;
 });
 
+/*
+*	Contém bug (Dois titulos não podem ter o mesmo nome)
+*
+.directive('meusTitulos', function() {
+    var ddo = {};
+    ddo.restrict = 'E';
+    ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';
+    ddo.controller = function($scope, recursoFoto) {
+        recursoFoto.query(function(fotos) {
+            $scope.titulos = fotos.map(function(foto) {
+                return foto.titulo;
+            });    
+        });
+    };
+    return ddo;
+});
+*/

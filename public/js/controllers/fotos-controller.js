@@ -5,7 +5,7 @@ angular.module('alurapic')
 	$scope.mensagem = '';
 	$scope.fotos = [];
 	$scope.filtro = '';
-
+	
 	recursoFoto.query(function(fotos) {
         $scope.fotos = fotos;
     }, function(erro) {
