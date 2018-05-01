@@ -30,17 +30,32 @@ angular.module('minhasDiretivas', [])
 
 	return ddo;
 })
-.directive('botaoRemover', function() {
+.directive('botaoDanger', function() {
 	var ddo = {};
 
 	ddo.restric = "AE";
 
 	ddo.scope = {
-		nome: '@',
-		acao: '&'
+		nome: '@', // execta String
+		acao: '&' // executa expressão
 	};
 
 	ddo.template = '<button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>';
 
 	return ddo;
+})
+.directive('botaoPrimary', function() {
+	var ddo = {};
+
+	ddo.restric = "AE";
+
+	ddo.scope = {
+		nome: '@', 
+		url: '@'
+	};
+
+	ddo.template = '<a href={{url}} class="btn btn-primary btn-block">{{nome}}</a>';
+
+	return ddo;
 });
+
