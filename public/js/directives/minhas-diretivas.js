@@ -29,4 +29,18 @@ angular.module('minhasDiretivas', [])
 	ddo.template = '<img class="img-responsive center-block" ng-src="{{url}}" alt="{{titulo}}">';
 
 	return ddo;
+})
+.directive('botaoRemover', function() {
+	var ddo = {};
+
+	ddo.restric = "AE";
+
+	ddo.scope = {
+		nome: '@',
+		acao: '&'
+	};
+
+	ddo.template = '<button ng-click="acao(foto)" class="btn btn-danger btn-block">{{nome}}</button>';
+
+	return ddo;
 });

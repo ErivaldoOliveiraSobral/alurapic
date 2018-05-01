@@ -15,8 +15,8 @@
 
 <div class="row">
     <meu-painel class="col-md-2 fade-out" ng-repeat="foto in fotos | filter: filtro" titulo="{{foto.titulo}}">
-        <img class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
+        <img ng-click="clicou(foto)" class="img-responsive center-block" src="{{foto.url}}" alt="{{foto.titulo}}">
         <a href="/fotos/edit/{{foto._id}}" class="btn btn-primary btn-block">Editar</a>
-        <button ng-click="remover(foto)" class="btn btn-danger btn-block">Remover</button>
+        <botao-remover nome="Remover" acao="remover(foto)"></botao-remover>
     </meu-painel>
 </div> <!-- fim do row -->

@@ -1,6 +1,6 @@
 // Usando o modulo (alurapic) criado em main.js
 angular.module('alurapic')
-.controller('FotosController', function($scope, $http) {
+.controller('FotosController', function($scope, $http, $window) {
 	
 	$scope.mensagem = '';
 	$scope.fotos = [];
@@ -24,6 +24,10 @@ angular.module('alurapic')
 		.error(function() {
 			$scope.mensagem = 'Foto ' + foto.titulo + 'não foi removida!';
 		});
+	};
+
+	$scope.clicou = function(foto) {
+		$window.location.href = foto.url;
 	};
 })
 .controller('FotoAngularController', function($scope) {
